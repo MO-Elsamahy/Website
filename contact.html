@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Mohamed Elsamahy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="images/weblogo.png">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; }
+    .main-section { margin-top: 2rem; }
+    .section-title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: #00bfff;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+    }
+    .contact-card {
+      border-radius: 1.25rem;
+      background: rgba(30,34,44,0.85);
+      backdrop-filter: blur(10px) saturate(1.2);
+      -webkit-backdrop-filter: blur(10px) saturate(1.2);
+      box-shadow: 0 4px 32px 0 rgba(0,191,255,0.10);
+      border: 1.5px solid rgba(0,191,255,0.10);
+      padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.18s, transform 0.18s;
+    }
+    .contact-card:hover {
+      box-shadow: 0 8px 32px 0 rgba(0,191,255,0.18);
+      transform: translateY(-4px) scale(1.02);
+    }
+    .contact-form input,
+    .contact-form textarea {
+      background: transparent;
+      border: 1.5px solid #2a3a4a;
+      color: #eaf6ff;
+      border-radius: 0.75rem;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      width: 100%;
+      font-size: 1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #00bfff;
+      box-shadow: 0 0 0 2px #00bfff33;
+      background: rgba(24, 28, 36, 0.98);
+      color: #fff;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #7fdcff;
+      opacity: 1;
+    }
+    .contact-form button {
+      margin-top: 0.5rem;
+      width: 100%;
+      padding: 0.75rem 0;
+      border: none;
+      border-radius: 0.75rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      background: linear-gradient(90deg, #00bfff 0%, #00fff7 100%);
+      color: #fff;
+      box-shadow: 0 0 8px #00bfff55, 0 0 2px #00fff733;
+      transition: transform 0.18s cubic-bezier(.4,2,.3,1), box-shadow 0.18s;
+    }
+    .contact-form button:hover:not(:disabled) {
+      transform: scale(1.07);
+      box-shadow: 0 0 16px #00bfff99, 0 0 8px #00fff799;
+    }
+    .contact-form button:active {
+      transform: scale(0.97);
+    }
+    .form-status {
+      text-align: center;
+      margin-top: 0.75rem;
+      font-size: 1rem;
+    }
+    .form-status.success { color: #22d3ee; }
+    .form-status.error { color: #f87171; }
+    .contact-alt {
+      text-align: center;
+      margin-top: 2rem;
+      color: #b0b8c9;
+    }
+    .contact-alt a { color: #00bfff; text-decoration: underline; }
+    .map-container {
+      border-radius: 1rem;
+      overflow: hidden;
+      margin-top: 1.2rem;
+      box-shadow: 0 2px 16px 0 rgba(0,191,255,0.10);
+    }
+    .book-btn {
+      width: 100%;
+      margin-bottom: 1.2rem;
+      padding: 0.75rem 0;
+      border: none;
+      border-radius: 0.75rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      background: linear-gradient(90deg, #00bfff 0%, #00fff7 100%);
+      color: #fff;
+      box-shadow: 0 0 8px #00bfff55, 0 0 2px #00fff733;
+      transition: transform 0.18s cubic-bezier(.4,2,.3,1), box-shadow 0.18s;
+    }
+    .book-btn:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 16px #00bfff99, 0 0 8px #00fff799;
+    }
+    @media (min-width: 992px) {
+      .contact-row { display: flex; gap: 2.5rem; }
+      .contact-card { flex: 1 1 0; margin-bottom: 0; }
+    }
+    .professional-navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(28, 32, 40, 0.92);
+      box-shadow: 0 4px 24px 0 rgba(0,191,255,0.10);
+      border-bottom: 1.5px solid rgba(0,191,255,0.10);
+      padding: 0.35rem 1.5rem;
+      font-family: 'Inter', Arial, sans-serif;
+      min-height: 58px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar-logo.left {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+    }
+    .logo-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px #00bfff33;
+      border: 1.5px solid #00bfff;
+      background: #fff;
+      object-fit: contain;
+      margin-right: 0.2rem;
+    }
+    .navbar-links.center {
+      flex: 1 1 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      transition: all 0.3s;
+    }
+    .navbar-admin.right {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      margin-left: 1rem;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.32em;
+      color: #eaf6ff;
+      font-weight: 500;
+      font-size: 1.01rem;
+      padding: 0.38rem 0.95rem;
+      border-radius: 0.6rem;
+      transition: color 0.18s, background 0.18s, box-shadow 0.18s, transform 0.18s;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      text-decoration: none;
+      background: none;
+    }
+    .nav-link.active,
+    .nav-link:hover {
+      color: #00fff7;
+      background: #00bfff18;
+      box-shadow: 0 1px 8px #00bfff18;
+      transform: scale(1.045);
+    }
+    .nav-link i {
+      font-size: 1.04em;
+      transition: color 0.18s, transform 0.18s;
+    }
+    .nav-link:hover i,
+    .nav-link.active i {
+      color: #00fff7;
+      transform: scale(1.12);
+    }
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 1.45rem;
+      color: #00bfff;
+      margin-left: 1rem;
+      transition: color 0.18s;
+    }
+    .navbar-toggle:focus {
+      color: #00fff7;
+    }
+    @media (max-width: 991px) {
+      .professional-navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.35rem 0.7rem;
+        min-height: 0;
+      }
+      .navbar-links.center {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.1rem;
+        display: none;
+        margin-top: 0.3rem;
+        width: 100%;
+        background: rgba(28,32,40,0.98);
+        border-radius: 0 0 1.1rem 1.1rem;
+        box-shadow: 0 4px 24px 0 rgba(0,191,255,0.10);
+        justify-content: flex-start;
+      }
+      .navbar-links.center.open {
+        display: flex;
+        animation: fadeInUp 0.5s;
+      }
+      .navbar-admin.right {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        justify-content: flex-end;
+      }
+      .navbar-toggle {
+        display: block;
+        align-self: flex-end;
+      }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    a, .nav-link, button, .btn, .navbar-links a, .navbar-admin a {
+      text-decoration: none !important;
+    }
+    a:hover, .nav-link:hover, button:hover, .btn:hover, .navbar-links a:hover, .navbar-admin a:hover,
+    a:focus, .nav-link:focus, button:focus, .btn:focus, .navbar-links a:focus, .navbar-admin a:focus,
+    a:active, .nav-link:active, button:active, .btn:active, .navbar-links a:active, .navbar-admin a:active {
+      text-decoration: none !important;
+    }
+  </style>
+</head>
+<body class="bg-dark text-light">
+  <div class="floating-bg-shapes">
+    <div class="bg-shape blob" style="top:5%;left:8%;width:120px;height:90px;"></div>
+    <div class="bg-shape heart" style="top:18%;right:12%;width:60px;height:54px;"></div>
+    <div class="bg-shape circle" style="top:60%;left:10%;width:48px;height:48px;"></div>
+    <div class="bg-shape blob" style="top:70%;right:8%;width:100px;height:80px;"></div>
+    <div class="bg-shape heart" style="top:40%;left:50%;width:38px;height:34px;"></div>
+    <div class="bg-shape circle" style="top:80%;left:70%;width:60px;height:60px;"></div>
+    <div class="bg-shape blob" style="top:30%;right:30%;width:80px;height:60px;"></div>
+    <div class="bg-shape heart" style="top:75%;right:20%;width:44px;height:40px;"></div>
+    <div class="bg-shape circle" style="top:10%;left:70%;width:36px;height:36px;"></div>
+  </div>
+  <div class="floating-bg-shapes front">
+    <div class="bg-shape blob" style="top:18%;left:80%;width:70px;height:54px;"></div>
+    <div class="bg-shape heart" style="top:60%;right:15%;width:44px;height:40px;"></div>
+    <div class="bg-shape circle" style="top:35%;left:35%;width:36px;height:36px;"></div>
+    <div class="bg-shape blob" style="top:75%;right:25%;width:60px;height:44px;"></div>
+    <div class="bg-shape heart" style="top:15%;left:60%;width:38px;height:34px;"></div>
+    <div class="bg-shape circle" style="top:70%;left:80%;width:50px;height:50px;"></div>
+  </div>
+  <header>
+    <nav class="modern-navbar professional-navbar">
+      <div class="navbar-logo left">
+        <img src="images/weblogo.png" alt="Logo" class="logo-img" />
+      </div>
+      <ul class="navbar-links center" id="navbarLinks">
+        <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> <span>Home</span></a></li>
+        <li><a href="about.html" class="nav-link"><i class="fas fa-user"></i> <span>About</span></a></li>
+        <li><a href="blog.html" class="nav-link"><i class="fas fa-blog"></i> <span>Blog</span></a></li>
+        <li><a href="portfolio.html" class="nav-link"><i class="fas fa-briefcase"></i> <span>Portfolio</span></a></li>
+        <li><a href="contact.html" class="nav-link active"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
+      </ul>
+      
+      <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+  <main class="container main-section">
+    <h1 class="section-title text-center mb-5">Contact</h1>
+    <div class="contact-row">
+      <div class="contact-card mb-4 mb-lg-0">
+        <h2 class="mb-4 text-center" style="color:#00bfff;font-size:1.4rem;font-weight:700;">Send a Message</h2>
+        <form class="contact-form" action="https://formsubmit.co/mohamed.amir2022@feps.edu.eg" method="POST" autocomplete="off">
+          <input type="hidden" name="_next" value="https://your-domain.com/public/thankyou.html" />
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <input type="text" name="subject" placeholder="Subject" required />
+          <textarea name="message" placeholder="Your Message" required rows="4"></textarea>
+          <button type="submit">Send</button>
+        </form>
+        <div class="contact-alt">
+          Or email: <a href="mailto:mohamed.amir2022@feps.edu.eg">mohamed.amir2022@feps.edu.eg</a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h2 class="mb-4 text-center" style="color:#00bfff;font-size:1.4rem;font-weight:700;">Book a Meeting</h2>
+        <a href="https://calendar.app.google/3eM1PyGSjhE6J8cPA" class="book-btn d-flex align-items-center justify-content-center gap-2" target="_blank" rel="noopener noreferrer" style="font-size:1.13rem;font-weight:700;background:linear-gradient(90deg,#00bfff 0%,#00fff7 100%);color:#fff;padding:0.85rem 2.2rem;border-radius:0.85rem;box-shadow:0 2px 12px 0 rgba(0,191,255,0.13);transition:background 0.18s,box-shadow 0.18s,transform 0.18s;">
+          <i class="fas fa-calendar-alt" style="font-size:1.3em;"></i>
+          Book a Meeting
+        </a>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps?q=4+%D8%A8+%D8%B4%D8%A7%D8%B1%D8%B9+%D8%AD%D8%B3%D9%8A%D9%86+%D8%AD%D8%AC%D8%A7%D8%B2%D9%8A,+Al+Inshaa+WA+Al+Munirah,+El+Sayeda+Zeinab,+Cairo+Governorate+4262111,+Egypt&output=embed" width="100%" height="220" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="glassy mt-5">
+    <div class="footer-content text-center py-3">
+      <div class="footer-social mb-2">
+        <a href="https://github.com/MO-Elsamahy" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+        <a href="https://www.facebook.com/M.ELSAMAHYY" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/mo_elsamahy1" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/mohamed-elsamahy-b788a2261/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <p class="mb-0">© 2025 Mohamed Elsamahy  All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Animate form entrance
+    document.querySelector('.contact-card').style.opacity = 0;
+    document.querySelector('.contact-card').style.transform = 'translateY(30px)';
+    setTimeout(() => {
+      document.querySelector('.contact-card').style.transition = 'opacity 0.6s, transform 0.6s cubic-bezier(.4,2,.3,1)';
+      document.querySelector('.contact-card').style.opacity = 1;
+      document.querySelector('.contact-card').style.transform = 'translateY(0)';
+    }, 100);
+  </script>
+</body>
+</html> 

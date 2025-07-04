@@ -1,0 +1,13 @@
+{
+  "name": "ai-engineer-portfolio",
+  "version": "1.0.0",
+  "description": "Modern, animated, responsive portfolio for AI Engineer with admin dashboard (Firebase)",
+  "main": "index.html",
+  "scripts": {},
+  "author": "Mohamed Elsamahy",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^5.3.0",
+    "particles.js": "^2.0.0"
+  }
+} 

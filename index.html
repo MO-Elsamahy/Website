@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohamed Elsamahy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="images/weblogo.png">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; }
+    a, .nav-link, button, .btn, .navbar-links a, .navbar-admin a {
+      text-decoration: none !important;
+    }
+    a:hover, .nav-link:hover, button:hover, .btn:hover, .navbar-links a:hover, .navbar-admin a:hover,
+    a:focus, .nav-link:focus, button:focus, .btn:focus, .navbar-links a:focus, .navbar-admin a:focus,
+    a:active, .nav-link:active, button:active, .btn:active, .navbar-links a:active, .navbar-admin a:active {
+      text-decoration: none !important;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .hero-bg svg {
+      width: 100vw; height: 100vh;
+      display: block;
+    }
+    .hero-section {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      background: none;
+    }
+    .hero-content {
+      text-align: center;
+      color: #eaf6ff;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      background: linear-gradient(90deg, #00bfff 0%, #00fff7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      margin-bottom: 1.2rem;
+    }
+    .hero-desc {
+      font-size: 1.3rem;
+      color: #b0b8c9;
+      margin-bottom: 2.2rem;
+    }
+    .cta-btns .btn {
+      margin: 0 0.5rem;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      padding: 0.75rem 2.2rem;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 12px 0 rgba(0,191,255,0.10);
+      transition: transform 0.18s cubic-bezier(.4,2,.3,1), box-shadow 0.18s;
+    }
+    .cta-btns .btn:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 4px 24px 0 rgba(0,191,255,0.18);
+    }
+    .main-section {
+      position: relative;
+      z-index: 2;
+      margin-top: 2rem;
+    }
+    .section-title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: #00bfff;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+    }
+    .card {
+      border-radius: 1.25rem;
+      background: rgba(30,34,44,0.85);
+      backdrop-filter: blur(10px) saturate(1.2);
+      -webkit-backdrop-filter: blur(10px) saturate(1.2);
+      box-shadow: 0 4px 32px 0 rgba(0,191,255,0.10);
+      border: 1.5px solid rgba(0,191,255,0.10);
+      transition: box-shadow 0.18s, transform 0.18s;
+    }
+    .card:hover {
+      box-shadow: 0 8px 32px 0 rgba(0,191,255,0.18);
+      transform: translateY(-4px) scale(1.02);
+    }
+    .footer-content {
+      font-size: 1rem;
+      color: #b0b8c9;
+    }
+    .footer-social a {
+      color: #00bfff;
+      margin: 0 0.5rem;
+      font-size: 1.3rem;
+      transition: color 0.18s;
+    }
+    .footer-social a:hover { color: #00fff7; }
+    .creative-navbar {
+      position: sticky;
+      top: 1.5rem;
+      z-index: 100;
+      width: 95%;
+      margin: 0 auto 2rem auto;
+      border-radius: 1.5rem;
+      background: rgba(30,34,44,0.85);
+      backdrop-filter: blur(14px) saturate(1.2);
+      -webkit-backdrop-filter: blur(14px) saturate(1.2);
+      box-shadow: 0 8px 32px 0 rgba(0,191,255,0.13);
+      border: 1.5px solid rgba(0,191,255,0.13);
+      padding: 0.5rem 2rem;
+      transition: box-shadow 0.18s, background 0.18s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .creative-navbar .navbar-brand {
+      color: #00bfff;
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: -0.5px;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.75rem;
+      transition: background 0.18s;
+    }
+    .creative-navbar .navbar-brand:hover {
+      background: #00bfff22;
+    }
+    .creative-navbar .nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .creative-navbar .nav-link {
+      position: relative;
+      color: #eaf6ff;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 0.75rem;
+      transition: color 0.18s, background 0.18s;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .creative-navbar .nav-link.active,
+    .creative-navbar .nav-link:hover {
+      color: #00fff7;
+      background: #00bfff22;
+    }
+    .creative-navbar .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 20%;
+      right: 20%;
+      bottom: 0.3rem;
+      height: 3px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #00bfff 0%, #00fff7 100%);
+      opacity: 0;
+      transform: scaleX(0.5);
+      transition: all 0.28s cubic-bezier(.4,2,.3,1);
+      z-index: 0;
+    }
+    .creative-navbar .nav-link.active::after,
+    .creative-navbar .nav-link:hover::after {
+      opacity: 1;
+      left: 10%;
+      right: 10%;
+      transform: scaleX(1);
+    }
+    .creative-navbar .nav-link i {
+      transition: color 0.18s, transform 0.18s;
+    }
+    .creative-navbar .nav-link:hover i,
+    .creative-navbar .nav-link.active i {
+      color: #00fff7;
+      transform: scale(1.18);
+    }
+    .creative-navbar .navbar-toggler {
+      display: none;
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 1.7rem;
+      color: #00bfff;
+      margin-left: 1rem;
+      transition: color 0.18s;
+    }
+    .creative-navbar .navbar-toggler:focus {
+      color: #00fff7;
+    }
+    @media (max-width: 991px) {
+      .creative-navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.5rem 1rem;
+      }
+      .creative-navbar .nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.2rem;
+        display: none;
+        margin-top: 0.5rem;
+      }
+      .creative-navbar .nav.open {
+        display: flex;
+        animation: fadeInUp 0.5s;
+      }
+      .creative-navbar .navbar-toggler {
+        display: block;
+        align-self: flex-end;
+      }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .professional-navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(28, 32, 40, 0.92);
+      box-shadow: 0 4px 24px 0 rgba(0,191,255,0.10);
+      border-bottom: 1.5px solid rgba(0,191,255,0.10);
+      padding: 0.35rem 1.5rem;
+      font-family: 'Inter', Arial, sans-serif;
+      min-height: 58px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar-logo.left {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+    }
+    .logo-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px #00bfff33;
+      border: 1.5px solid #00bfff;
+      background: #fff;
+      object-fit: contain;
+      margin-right: 0.2rem;
+    }
+    .navbar-links.center {
+      flex: 1 1 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      transition: all 0.3s;
+    }
+    .navbar-admin.right {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      margin-left: 1rem;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.32em;
+      color: #eaf6ff;
+      font-weight: 500;
+      font-size: 1.01rem;
+      padding: 0.38rem 0.95rem;
+      border-radius: 0.6rem;
+      transition: color 0.18s, background 0.18s, box-shadow 0.18s, transform 0.18s;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      text-decoration: none;
+      background: none;
+    }
+    .nav-link.active,
+    .nav-link:hover {
+      color: #00fff7;
+      background: #00bfff18;
+      box-shadow: 0 1px 8px #00bfff18;
+      transform: scale(1.045);
+    }
+    .nav-link i {
+      font-size: 1.04em;
+      transition: color 0.18s, transform 0.18s;
+    }
+    .nav-link:hover i,
+    .nav-link.active i {
+      color: #00fff7;
+      transform: scale(1.12);
+    }
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 1.45rem;
+      color: #00bfff;
+      margin-left: 1rem;
+      transition: color 0.18s;
+    }
+    .navbar-toggle:focus {
+      color: #00fff7;
+    }
+    @media (max-width: 991px) {
+      .professional-navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.35rem 0.7rem;
+        min-height: 0;
+      }
+      .navbar-links.center {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.1rem;
+        display: none;
+        margin-top: 0.3rem;
+        width: 100%;
+        background: rgba(28,32,40,0.98);
+        border-radius: 0 0 1.1rem 1.1rem;
+        box-shadow: 0 4px 24px 0 rgba(0,191,255,0.10);
+        justify-content: flex-start;
+      }
+      .navbar-links.center.open {
+        display: flex;
+        animation: fadeInUp 0.5s;
+      }
+      .navbar-admin.right {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        justify-content: flex-end;
+      }
+      .navbar-toggle {
+        display: block;
+        align-self: flex-end;
+      }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-dark text-light position-relative">
+  <div class="floating-bg-shapes">
+    <div class="bg-shape blob" style="top:5%;left:8%;width:120px;height:90px;"></div>
+    <div class="bg-shape heart" style="top:18%;right:12%;width:60px;height:54px;"></div>
+    <div class="bg-shape circle" style="top:60%;left:10%;width:48px;height:48px;"></div>
+    <div class="bg-shape blob" style="top:70%;right:8%;width:100px;height:80px;"></div>
+    <div class="bg-shape heart" style="top:40%;left:50%;width:38px;height:34px;"></div>
+    <div class="bg-shape circle" style="top:80%;left:70%;width:60px;height:60px;"></div>
+    <div class="bg-shape blob" style="top:30%;right:30%;width:80px;height:60px;"></div>
+    <div class="bg-shape heart" style="top:75%;right:20%;width:44px;height:40px;"></div>
+    <div class="bg-shape circle" style="top:10%;left:70%;width:36px;height:36px;"></div>
+  </div>
+  <div class="floating-bg-shapes front">
+    <div class="bg-shape blob" style="top:10%;left:75%;width:90px;height:70px;"></div>
+    <div class="bg-shape heart" style="top:50%;right:10%;width:54px;height:48px;"></div>
+    <div class="bg-shape circle" style="top:35%;left:20%;width:40px;height:40px;"></div>
+    <div class="bg-shape blob" style="top:80%;right:35%;width:70px;height:54px;"></div>
+    <div class="bg-shape heart" style="top:25%;left:60%;width:34px;height:30px;"></div>
+    <div class="bg-shape circle" style="top:70%;left:75%;width:44px;height:44px;"></div>
+  </div>
+  <header>
+    <nav class="modern-navbar professional-navbar">
+      <div class="navbar-logo left">
+        <img src="images/weblogo.png" alt="Logo" class="logo-img" />
+      </div>
+      <ul class="navbar-links center" id="navbarLinks">
+        <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> <span>Home</span></a></li>
+        <li><a href="about.html" class="nav-link"><i class="fas fa-user"></i> <span>About</span></a></li>
+        <li><a href="blog.html" class="nav-link"><i class="fas fa-blog"></i> <span>Blog</span></a></li>
+        <li><a href="portfolio.html" class="nav-link"><i class="fas fa-briefcase"></i> <span>Portfolio</span></a></li>
+        <li><a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
+      </ul>
+      <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+  <div class="hero-bg">
+    <svg viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="300" cy="200" r="120" fill="#00bfff" fill-opacity="0.08">
+        <animate attributeName="cy" values="200;260;200" dur="7s" repeatCount="indefinite" />
+      </circle>
+      <rect x="1400" y="100" width="180" height="180" rx="40" fill="#00fff7" fill-opacity="0.07">
+        <animate attributeName="y" values="100;180;100" dur="9s" repeatCount="indefinite" />
+      </rect>
+      <polygon points="900,900 1000,950 1100,900 1050,1000 950,1000" fill="#00bfff" fill-opacity="0.06">
+        <animateTransform attributeName="transform" type="rotate" from="0 1000 950" to="360 1000 950" dur="18s" repeatCount="indefinite" />
+      </polygon>
+      <ellipse cx="1600" cy="800" rx="90" ry="40" fill="#00fff7" fill-opacity="0.09">
+        <animate attributeName="cx" values="1600;1700;1600" dur="11s" repeatCount="indefinite" />
+      </ellipse>
+      <rect x="400" y="800" width="120" height="60" rx="20" fill="#00fff7" fill-opacity="0.06">
+        <animate attributeName="x" values="400;500;400" dur="13s" repeatCount="indefinite" />
+      </rect>
+    </svg>
+  </div>
+  <main class="container main-section">
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">Welcome to My Portfolio</h1>
+        <p class="hero-desc">Innovative Solutions &bull; Data Science &bull; Machine Learning &bull; Climate Diplomacy</p>
+        <div class="cta-btns">
+          <a href="about.html" class="btn btn-primary">Know More about me</a>
+          <a href="contact.html" class="btn btn-outline-light">Contact Me</a>
+        </div>
+      </div>
+    </section>
+    <section class="featured-projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card portfolio-card portfolio-card-creative h-100 bp-cover-card" style="background: none;">
+            <img src="images/project-4.png" class="bp-cover-img" alt="E-Government Implementation in Egypt Full Cover" />
+            <div class="floating-shape blob"></div>
+            <div class="floating-shape heart"></div>
+            <div class="floating-shape circle"></div>
+            <div class="card-body glassy bp-cover-overlay d-flex flex-column justify-content-end align-items-start">
+              <h5 class="card-title">E-Government Implementation in Egypt</h5>
+              <p class="card-text">Comprehensive analysis of Egypt's e-government ecosystem, challenges, and strategic framework for Vision 2030.</p>
+              <div class="mb-3">
+                <span class="badge bg-primary me-1">SPSS</span>
+                <span class="badge bg-info me-1">ISM-MICMAC</span>
+                <span class="badge bg-success me-1">Comparative Analysis</span>
+                <span class="badge bg-warning text-dark me-1">Policy Review</span>
+              </div>
+              <a href="portfolio.html#egov-project-modal" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card portfolio-card portfolio-card-creative h-100 bp-cover-card" style="background: none;">
+            <img src="images/project-3.png" class="bp-cover-img" alt="Statistical Modeling of Blood Pressure Full Cover" />
+            <div class="floating-shape blob"></div>
+            <div class="floating-shape heart"></div>
+            <div class="floating-shape circle"></div>
+            <div class="card-body glassy bp-cover-overlay d-flex flex-column justify-content-end align-items-start">
+              <h5 class="card-title">Statistical Modeling of Blood Pressure</h5>
+              <p class="card-text">Regression modeling of blood pressure using age, BSA, pulse, stress, and drug utilization. Final model explains 90.1% of BP variation.</p>
+              <div class="mb-3">
+                <span class="badge bg-primary me-1">R</span>
+                <span class="badge bg-info me-1">car</span>
+                <span class="badge bg-success me-1">ggplot2</span>
+                <span class="badge bg-warning text-dark me-1">lmtest</span>
+              </div>
+              <a href="portfolio.html#bp-project-modal" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card portfolio-card portfolio-card-creative h-100 bp-cover-card" style="background: none;">
+            <img src="images/project-2.png" class="bp-cover-img" alt="Time Series Analysis of the VIX Full Cover" />
+            <div class="floating-shape blob"></div>
+            <div class="floating-shape heart"></div>
+            <div class="floating-shape circle"></div>
+            <div class="card-body glassy bp-cover-overlay d-flex flex-column justify-content-end align-items-start">
+              <h5 class="card-title">Time Series Analysis of the VIX</h5>
+              <p class="card-text">Forecasting the VIX Index (1990–2025) using ARIMA and decomposition. AR(1) model predicts stable volatility through 2034.</p>
+              <div class="mb-3">
+                <span class="badge bg-primary me-1">R</span>
+                <span class="badge bg-info me-1">forecast</span>
+                <span class="badge bg-success me-1">tseries</span>
+                <span class="badge bg-warning text-dark me-1">seasonal</span>
+              </div>
+              <a href="portfolio.html#vix-project-modal" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <a href="portfolio.html" class="btn btn-primary">View All Projects</a>
+      </div>
+    </section>
+    <section class="featured-blogs">
+      <h2 class="section-title">Featured Blogs</h2>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card blog-card h-100">
+            <img src="images/1st-article.png" class="card-img-top" alt="The Role of AI in Climate Change Mitigation: A Data Driven Revolution">
+            <div class="card-body">
+              <h5 class="card-title">The Role of AI in Climate Change Mitigation: A Data Driven Revolution</h5>
+              <p class="card-text"><span class="badge bg-primary">Article</span> <span class="badge bg-info">AI</span> <span class="badge bg-success">Climate</span></p>
+              <a href="blog.html#ai-climate-article" class="stretched-link text-light" data-bs-toggle="modal">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card blog-card h-100">
+            <img src="images/2nd-article.png" class="card-img-top" alt="How Data Science is Transforming Climate Diplomacy">
+            <div class="card-body">
+              <h5 class="card-title">How Data Science is Transforming Climate Diplomacy: A Data Driven Approach to Global Sustainability</h5>
+              <p class="card-text"><span class="badge bg-primary">Article</span> <span class="badge bg-info">Data Science</span> <span class="badge bg-success">Diplomacy</span></p>
+              <a href="blog.html#climate-diplomacy-article" class="stretched-link text-light" data-bs-toggle="modal">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card blog-card h-100">
+            <img src="images/3rd-article.png" class="card-img-top" alt="Paris Moment for the Ocean: Analyzing the SOS Ocean Declaration Ahead of UNOC3">
+            <div class="card-body">
+              <h5 class="card-title">Paris Moment for the Ocean: Analyzing the SOS Ocean Declaration Ahead of UNOC3</h5>
+              <p class="card-text"><span class="badge bg-primary">Article</span> <span class="badge bg-info">Ocean</span> <span class="badge bg-success">UNOC3</span></p>
+              <a href="blog.html#sos-ocean-article" class="stretched-link text-light" data-bs-toggle="modal">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <a href="blog.html" class="btn btn-primary">View All Blogs</a>
+      </div>
+    </section>
+  </main>
+  <footer class="glassy mt-5">
+    <div class="footer-content text-center py-3">
+      <div class="footer-social mb-2">
+        <a href="https://github.com/MO-Elsamahy" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+        <a href="https://www.facebook.com/M.ELSAMAHYY" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/mo_elsamahy1" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/mohamed-elsamahy-b788a2261/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <p class="mb-0">© 2025 Mohamed Elsamahy  All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Navbar mobile toggle
+    const navbarToggle = document.getElementById('navbarToggle');
+    const navbarLinks = document.getElementById('navbarLinks');
+    navbarToggle.addEventListener('click', function() {
+      navbarLinks.classList.toggle('open');
+      navbarToggle.querySelector('i').classList.toggle('fa-bars');
+      navbarToggle.querySelector('i').classList.toggle('fa-times');
+    });
+    // Active link highlight
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      if(window.location.pathname.endsWith(link.getAttribute('href'))) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+</html> 

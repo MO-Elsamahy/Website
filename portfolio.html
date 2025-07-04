@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Mohamed Elsamahy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="images/weblogo.png">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; }
+    .main-section { margin-top: 2rem; }
+    .section-title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: #00bfff;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+    }
+    .portfolio-card {
+      border-radius: 1.25rem;
+      background: rgba(30,34,44,0.85);
+      backdrop-filter: blur(10px) saturate(1.2);
+      -webkit-backdrop-filter: blur(10px) saturate(1.2);
+      box-shadow: 0 4px 32px 0 rgba(0,191,255,0.10);
+      border: 1.5px solid rgba(0,191,255,0.10);
+      transition: box-shadow 0.18s, transform 0.18s;
+    }
+    .portfolio-card:hover {
+      box-shadow: 0 8px 32px 0 rgba(0,191,255,0.18);
+      transform: translateY(-4px) scale(1.02);
+    }
+    .portfolio-card img {
+      border-radius: 1.25rem 1.25rem 0 0;
+      object-fit: cover;
+      height: 180px;
+      width: 100%;
+    }
+    .portfolio-card .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #00bfff;
+    }
+    .portfolio-card .badge {
+      font-size: 0.85rem;
+      margin-right: 0.3rem;
+    }
+    .portfolio-controls {
+      margin-bottom: 2rem;
+    }
+    .input-group input {
+      border-radius: 0.75rem;
+      border: 1.5px solid #2a3a4a;
+      background: rgba(24, 28, 36, 0.92);
+      color: #eaf6ff;
+    }
+    .input-group input:focus {
+      border-color: #00bfff;
+      box-shadow: 0 0 0 2px #00bfff33;
+      background: rgba(24, 28, 36, 0.98);
+      color: #fff;
+    }
+    .btn-group .btn {
+      border-radius: 0.75rem;
+      font-weight: 600;
+      margin-left: 0.2rem;
+      margin-right: 0.2rem;
+    }
+    .professional-navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(28, 32, 40, 0.92);
+      box-shadow: 0 4px 24px 0 rgba(0,191,255,0.10);
+      border-bottom: 1.5px solid rgba(0,191,255,0.10);
+      padding: 0.35rem 1.5rem;
+      font-family: 'Inter', Arial, sans-serif;
+      min-height: 58px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar-logo.left {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+    }
+    .logo-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px #00bfff33;
+      border: 1.5px solid #00bfff;
+      background: #fff;
+      object-fit: contain;
+      margin-right: 0.2rem;
+    }
+    .navbar-links.center {
+      flex: 1 1 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      transition: all 0.3s;
+    }
+    .navbar-admin.right {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      margin-left: 1rem;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.32em;
+      color: #eaf6ff;
+      font-weight: 500;
+      font-size: 1.01rem;
+      padding: 0.38rem 0.95rem;
+      border-radius: 0.6rem;
+      transition: color 0.18s, background 0.18s, box-shadow 0.18s, transform 0.18s;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      text-decoration: none;
+      background: none;
+    }
+    .nav-link.active,
+    .nav-link:hover {
+      color: #00fff7;
+      background: #00bfff18;
+      box-shadow: 0 1px 8px #00bfff18;
+      transform: scale(1.045);
+    }
+    .nav-link i {
+      font-size: 1.04em;
+      transition: color 0.18s, transform 0.18s;
+    }
+    .nav-link:hover i,
+    .nav-link.active i {
+      color: #00fff7;
+      transform: scale(1.12);
+    }
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 1.45rem;
+      color: #00bfff;
+      margin-left: 1rem;
+      transition: color 0.18s;
+    }
+    .navbar-toggle:focus {
+      color: #00fff7;
+    }
+    @media (max-width: 991px) {
+      .professional-navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.35rem 0.7rem;
+        min-height: 0;
+      }
+      .navbar-links.center {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.1rem;
+        display: none;
+        margin-top: 0.3rem;
+        width: 100%;
+        background: rgba(28,32,40,0.98);
+        border-radius: 0 0 1.1rem 1.1rem;
+        box-shadow: 0 4px 24px 0 rgba(0,191,255,0.10);
+        justify-content: flex-start;
+      }
+      .navbar-links.center.open {
+        display: flex;
+        animation: fadeInUp 0.5s;
+      }
+      .navbar-admin.right {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        justify-content: flex-end;
+      }
+      .navbar-toggle {
+        display: block;
+        align-self: flex-end;
+      }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    a, .nav-link, button, .btn, .navbar-links a, .navbar-admin a {
+      text-decoration: none !important;
+    }
+    a:hover, .nav-link:hover, button:hover, .btn:hover, .navbar-links a:hover, .navbar-admin a:hover,
+    a:focus, .nav-link:focus, button:focus, .btn:focus, .navbar-links a:focus, .navbar-admin a:focus,
+    a:active, .nav-link:active, button:active, .btn:active, .navbar-links a:active, .navbar-admin a:active {
+      text-decoration: none !important;
+    }
+    .portfolio-filters {
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.7s cubic-bezier(.4,2,.3,1);
+    }
+    .portfolio-filter-btn {
+      background: linear-gradient(90deg, #00bfff 0%, #00fff7 100%);
+      color: #fff;
+      border: none;
+      border-radius: 2rem;
+      padding: 0.6rem 2.2rem;
+      font-weight: 600;
+      font-size: 1.08rem;
+      box-shadow: 0 2px 12px 0 rgba(0,191,255,0.10);
+      transition: background 0.18s, color 0.18s, transform 0.18s, box-shadow 0.18s;
+      outline: none;
+      margin: 0 0.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .portfolio-filter-btn.active, .portfolio-filter-btn:hover {
+      background: linear-gradient(90deg, #00fff7 0%, #00bfff 100%);
+      color: #222;
+      transform: scale(1.08);
+      box-shadow: 0 4px 24px 0 rgba(0,191,255,0.18);
+    }
+    .portfolio-filter-btn i {
+      margin-right: 0.5em;
+      font-size: 1.1em;
+      vertical-align: middle;
+      transition: color 0.18s, transform 0.18s;
+    }
+  </style>
+</head>
+<body class="bg-dark text-light">
+  <div class="floating-bg-shapes">
+    <div class="bg-shape blob" style="top:5%;left:8%;width:120px;height:90px;"></div>
+    <div class="bg-shape heart" style="top:18%;right:12%;width:60px;height:54px;"></div>
+    <div class="bg-shape circle" style="top:60%;left:10%;width:48px;height:48px;"></div>
+    <div class="bg-shape blob" style="top:70%;right:8%;width:100px;height:80px;"></div>
+    <div class="bg-shape heart" style="top:40%;left:50%;width:38px;height:34px;"></div>
+    <div class="bg-shape circle" style="top:80%;left:70%;width:60px;height:60px;"></div>
+    <div class="bg-shape blob" style="top:30%;right:30%;width:80px;height:60px;"></div>
+    <div class="bg-shape heart" style="top:75%;right:20%;width:44px;height:40px;"></div>
+    <div class="bg-shape circle" style="top:10%;left:70%;width:36px;height:36px;"></div>
+  </div>
+  <div class="floating-bg-shapes front">
+    <div class="bg-shape blob" style="top:15%;left:65%;width:80px;height:60px;"></div>
+    <div class="bg-shape heart" style="top:60%;right:15%;width:44px;height:40px;"></div>
+    <div class="bg-shape circle" style="top:25%;left:30%;width:36px;height:36px;"></div>
+    <div class="bg-shape blob" style="top:85%;right:35%;width:60px;height:44px;"></div>
+    <div class="bg-shape heart" style="top:20%;left:70%;width:38px;height:34px;"></div>
+    <div class="bg-shape circle" style="top:75%;left:65%;width:50px;height:50px;"></div>
+  </div>
+  <header>
+    <nav class="modern-navbar professional-navbar">
+      <div class="navbar-logo left">
+        <img src="images/weblogo.png" alt="Logo" class="logo-img" />
+      </div>
+      <ul class="navbar-links center" id="navbarLinks">
+        <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> <span>Home</span></a></li>
+        <li><a href="about.html" class="nav-link"><i class="fas fa-user"></i> <span>About</span></a></li>
+        <li><a href="blog.html" class="nav-link"><i class="fas fa-blog"></i> <span>Blog</span></a></li>
+        <li><a href="portfolio.html" class="nav-link active"><i class="fas fa-briefcase"></i> <span>Portfolio</span></a></li>
+        <li><a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
+      </ul>
+      <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+  </header>
+  <main class="container main-section">
+    <h1 class="section-title text-center mb-5">Portfolio</h1>
+    <div class="portfolio-filters d-flex justify-content-center mb-4">
+      <button type="button" class="btn portfolio-filter-btn active" data-filter="statistical">
+        <i class="fas fa-chart-bar"></i> Statistical Analysis
+      </button>
+      <button type="button" class="btn portfolio-filter-btn" data-filter="climate">
+        <i class="fas fa-leaf"></i> Climate Action
+      </button>
+      <button type="button" class="btn portfolio-filter-btn" data-filter="other">
+        <i class="fas fa-ellipsis-h"></i> Other
+      </button>
+    </div>
+    <div id="portfolio-list"></div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <!-- Portfolio Item Example -->
+      <div class="col">
+        <div class="card portfolio-card portfolio-card-creative h-100">
+          <div class="floating-shape blob"></div>
+          <div class="floating-shape heart"></div>
+          <div class="floating-shape circle"></div>
+          <a href="#abm-image-modal" data-bs-toggle="modal">
+            <img src="images/project-5.png" class="card-img-top" alt="ABM Report: Invasive Species Impact in Egypt" style="cursor:zoom-in;max-height:220px;object-fit:cover;" />
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">ABM Report: Invasive Species Impact in Egypt</h5>
+            <p class="card-text">Agent-Based Model of water hyacinth invasions, biocontrol, and ecosystem dynamics in Egypt.</p>
+            <div class="mb-3">
+              <span class="badge bg-primary me-1">NetLogo</span>
+              <span class="badge bg-info me-1">BehaviorSpace</span>
+              <span class="badge bg-success me-1">R</span>
+              <span class="badge bg-warning text-dark me-1">Mermaid</span>
+            </div>
+            <a href="#abm-project-modal" class="btn btn-primary" data-bs-toggle="modal">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card portfolio-card portfolio-card-creative h-100">
+          <div class="floating-shape blob"></div>
+          <div class="floating-shape heart"></div>
+          <div class="floating-shape circle"></div>
+          <a href="#climate-employment-image-modal" data-bs-toggle="modal">
+            <img src="images/project-6.png" class="card-img-top" alt="Climate vs. Youth Unemployment in Egypt (1991–2023)" style="cursor:zoom-in;max-height:220px;object-fit:cover;" />
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Climate vs. Youth Unemployment in Egypt (1991–2023)</h5>
+            <p class="card-text">Statistical analysis of NASA temperature anomalies and World Bank unemployment data using Python modeling.</p>
+            <div class="mb-3">
+              <span class="badge bg-primary me-1">Python</span>
+              <span class="badge bg-info me-1">Jupyter</span>
+              <span class="badge bg-success me-1">pandas</span>
+              <span class="badge bg-warning text-dark me-1">statsmodels</span>
+              <span class="badge bg-secondary me-1">scikit-learn</span>
+              <span class="badge bg-info text-dark me-1">seaborn</span>
+            </div>
+            <a href="#climate-employment-project-modal" class="btn btn-primary" data-bs-toggle="modal">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card portfolio-card portfolio-card-creative h-100">
+          <div class="floating-shape blob"></div>
+          <div class="floating-shape heart"></div>
+          <div class="floating-shape circle"></div>
+          <a href="#wcdb-image-modal" data-bs-toggle="modal">
+            <img src="images/project-7.png" class="card-img-top" alt="World Cup Database" style="cursor:zoom-in;max-height:220px;object-fit:cover;" />
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">World Cup Database</h5>
+            <p class="card-text">Relational database for FIFA World Cup data with 11 core entities, complex queries, and user-friendly management.</p>
+            <div class="mb-3">
+              <span class="badge bg-primary me-1">SQL</span>
+              <span class="badge bg-info me-1">MS Access</span>
+              <span class="badge bg-success me-1">GitHub</span>
+            </div>
+            <a href="#wcdb-project-modal" class="btn btn-primary" data-bs-toggle="modal">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card portfolio-card portfolio-card-creative h-100">
+          <div class="floating-shape blob"></div>
+          <div class="floating-shape heart"></div>
+          <div class="floating-shape circle"></div>
+          <a href="#milk-efficiency-image-modal" data-bs-toggle="modal">
+            <img src="images/project-1.png" class="card-img-top" alt="Determinants of Milk Production Efficiency" style="cursor:zoom-in;max-height:220px;object-fit:cover;" />
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Determinants of Milk Production Efficiency</h5>
+            <p class="card-text">Panel data analysis of Spanish dairy farms (1993–1998) using fixed effects and production function modeling.</p>
+            <div class="mb-3">
+              <span class="badge bg-primary me-1">R</span>
+              <span class="badge bg-info me-1">plm</span>
+              <span class="badge bg-success me-1">lmtest</span>
+              <span class="badge bg-warning text-dark me-1">sandwich</span>
+            </div>
+            <a href="#milk-efficiency-project-modal" class="btn btn-primary" data-bs-toggle="modal">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card portfolio-card portfolio-card-creative h-100 bp-cover-card" style="background: none;">
+          <img src="images/project-3.png" class="bp-cover-img" alt="Statistical Modeling of Blood Pressure Full Cover" />
+          <div class="floating-shape blob"></div>
+          <div class="floating-shape heart"></div>
+          <div class="floating-shape circle"></div>
+          <div class="card-body glassy bp-cover-overlay d-flex flex-column justify-content-end align-items-start">
+            <h5 class="card-title">Statistical Modeling of Blood Pressure</h5>
+            <p class="card-text">Regression modeling of blood pressure using age, BSA, pulse, stress, and drug utilization. Final model explains 90.1% of BP variation.</p>
+            <div class="mb-3">
+              <span class="badge bg-primary me-1">R</span>
+              <span class="badge bg-info me-1">car</span>
+              <span class="badge bg-success me-1">ggplot2</span>
+              <span class="badge bg-warning text-dark me-1">lmtest</span>
+            </div>
+            <a href="#bp-project-modal" class="btn btn-primary" data-bs-toggle="modal">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card portfolio-card portfolio-card-creative h-100">
+          <div class="floating-shape blob"></div>
+          <div class="floating-shape heart"></div>
+          <div class="floating-shape circle"></div>
+          <a href="#vix-image-modal" data-bs-toggle="modal">
+            <img src="images/project-2.png" class="card-img-top" alt="Time Series Analysis of the VIX" style="cursor:zoom-in;max-height:220px;object-fit:cover;" />
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Time Series Analysis of the VIX (Volatility Index)</h5>
+            <p class="card-text">Forecasting the VIX Index (1990–2025) using ARIMA and decomposition. AR(1) model predicts stable volatility through 2034.</p>
+            <div class="mb-3">
+              <span class="badge bg-primary me-1">R</span>
+              <span class="badge bg-info me-1">forecast</span>
+              <span class="badge bg-success me-1">tseries</span>
+              <span class="badge bg-warning text-dark me-1">seasonal</span>
+            </div>
+            <a href="#vix-project-modal" class="btn btn-primary" data-bs-toggle="modal">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card portfolio-card portfolio-card-creative h-100 bp-cover-card" style="background: none;">
+          <img src="images/project-4.png" class="bp-cover-img" alt="E-Government Implementation in Egypt Full Cover" />
+          <div class="floating-shape blob"></div>
+          <div class="floating-shape heart"></div>
+          <div class="floating-shape circle"></div>
+          <div class="card-body glassy bp-cover-overlay d-flex flex-column justify-content-end align-items-start">
+            <h5 class="card-title">E-Government Implementation in Egypt</h5>
+            <p class="card-text">Comprehensive analysis of Egypt's e-government ecosystem, challenges, and strategic framework for Vision 2030.</p>
+            <div class="mb-3">
+              <span class="badge bg-primary me-1">SPSS</span>
+              <span class="badge bg-info me-1">ISM-MICMAC</span>
+              <span class="badge bg-success me-1">Comparative Analysis</span>
+              <span class="badge bg-warning text-dark me-1">Policy Review</span>
+            </div>
+            <a href="#egov-project-modal" class="btn btn-primary" data-bs-toggle="modal">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="glassy mt-5">
+    <div class="footer-content text-center py-3">
+      <div class="footer-social mb-2">
+        <a href="https://github.com/MO-Elsamahy" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+        <a href="https://www.facebook.com/M.ELSAMAHYY" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/mo_elsamahy1" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/mohamed-elsamahy-b788a2261/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <p class="mb-0">© 2025 Mohamed Elsamahy  All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Active link highlight (for demo, based on URL)
+    const links = nav.querySelectorAll('.nav-link');
+    links.forEach(link => {
+      if(window.location.pathname.endsWith(link.getAttribute('href'))) {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <script src="js/portfolio.js"></script>
+  <!-- Modal for ABM Project Image Preview -->
+  <div class="modal fade" id="abm-image-modal" tabindex="-1" aria-labelledby="abmImageLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-light p-2" style="border-radius:1.2rem;">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title" id="abmImageLabel">ABM Report: Invasive Species Impact in Egypt</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center p-2">
+          <img src="images/project-5.png" alt="ABM Report Full Preview" class="img-fluid rounded shadow" style="max-width:100%;height:auto;" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for ABM Project -->
+  <div class="modal fade" id="abm-project-modal" tabindex="-1" aria-labelledby="abmProjectLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header border-0 pb-0">
+          <h4 class="modal-title fw-bold" id="abmProjectLabel" style="color:#00bfff;">ABM Report: Invasive Species Impact in Egypt</h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <a href="#abm-image-modal" data-bs-toggle="modal">
+            <img src="images/project-5.png" alt="ABM Report Cover" class="img-fluid rounded shadow mb-4 d-block mx-auto" style="max-height:220px;object-fit:cover;cursor:zoom-in;" />
+          </a>
+          <hr style="border-top:1.5px solid #00bfff33;" class="mb-4" />
+          <section style="font-size:1.13rem;line-height:1.7;">
+            <p><strong>Summary:</strong> Developed an Agent-Based Model (ABM) using NetLogo to simulate water hyacinth invasions in Egyptian ecosystems. Modeled interactions between invasive plants, weevils (biocontrol), fish, and algae under seasonal variations.</p>
+            <ul>
+              <li><strong>Uncontrolled hyacinths</strong> cause hypoxia and ecosystem collapse.</li>
+              <li><strong>Weevils</strong> effectively reduce biomass; fish indirectly influence control efficacy.</li>
+              <li>Validated through micro/macro ecological patterns.</li>
+            </ul>
+            <div class="mb-3">
+              <span class="badge bg-primary me-1">NetLogo</span>
+              <span class="badge bg-info me-1">BehaviorSpace</span>
+              <span class="badge bg-success me-1">R</span>
+              <span class="badge bg-warning text-dark me-1">Mermaid</span>
+            </div>
+            <p><strong>Extensions:</strong> Proposed mechanical removal, genetic adaptation, and habitat fragmentation modules.</p>
+            <a href="pdfs/ABM Report.pdf" target="_blank" class="btn btn-primary mt-3">Preview Project (PDF)</a>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for Climate vs. Youth Unemployment Image Preview -->
+  <div class="modal fade" id="climate-employment-image-modal" tabindex="-1" aria-labelledby="climateEmploymentImageLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-light p-2" style="border-radius:1.2rem;">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title" id="climateEmploymentImageLabel">Climate vs. Youth Unemployment in Egypt (1991–2023)</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center p-2">
+          <img src="images/project-6.png" alt="Climate vs. Youth Unemployment Full Preview" class="img-fluid rounded shadow" style="max-width:100%;height:auto;" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for Climate vs. Youth Unemployment Project -->
+  <div class="modal fade" id="climate-employment-project-modal" tabindex="-1" aria-labelledby="climateEmploymentProjectLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header border-0 pb-0">
+          <h4 class="modal-title fw-bold" id="climateEmploymentProjectLabel" style="color:#00bfff;">Climate vs. Youth Unemployment in Egypt (1991–2023)</h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <a href="#climate-employment-image-modal" data-bs-toggle="modal">
+            <img src="images/project-6.png" alt="Climate vs. Youth Unemployment Cover" class="img-fluid rounded shadow mb-4 d-block mx-auto" style="max-height:220px;object-fit:cover;cursor:zoom-in;" />
+          </a>
+          <hr style="border-top:1.5px solid #00bfff33;" class="mb-4" />
+          <section style="font-size:1.13rem;line-height:1.7;">
+            <p><strong>Summary:</strong> Analyzed NASA temperature anomalies and World Bank unemployment data using Python statistical modeling.</p>
+            <ul>
+              <li>OLS/polynomial regression, LOWESS smoothing, residual diagnostics.</li>
+              <li>Correlation analysis (Pearson/Spearman).</li>
+            </ul>
+            <div class="mb-3">
+              <span class="badge bg-primary me-1">Python</span>
+              <span class="badge bg-info me-1">Jupyter</span>
+              <span class="badge bg-success me-1">pandas</span>
+              <span class="badge bg-warning text-dark me-1">statsmodels</span>
+              <span class="badge bg-secondary me-1">scikit-learn</span>
+              <span class="badge bg-info text-dark me-1">seaborn</span>
+            </div>
+            <p><strong>Findings:</strong></p>
+            <ul>
+              <li>No significant correlation (linear R²=0.034; cubic R²=0.121).</li>
+              <li>Post-2017 unemployment decline linked to economic reforms (IMF bailout, digital initiatives), not climate.</li>
+            </ul>
+            <p><strong>Policy Insight:</strong> Labor shift from agriculture (28%→20%) reduced climate sensitivity.</p>
+            <a href="pdfs/Climate vs Employment Investigating the Relationship Between Temperature Anomalies and Youth Unemployment in Egypt (1991–2023).pdf" target="_blank" class="btn btn-primary mt-3">Preview Project (PDF)</a>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for World Cup Database Image Preview -->
+  <div class="modal fade" id="wcdb-image-modal" tabindex="-1" aria-labelledby="wcdbImageLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-light p-2" style="border-radius:1.2rem;">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title" id="wcdbImageLabel">World Cup Database</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center p-2">
+          <img src="images/project-7.png" alt="World Cup Database Full Preview" class="img-fluid rounded shadow" style="max-width:100%;height:auto;" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for World Cup Database Project -->
+  <div class="modal fade" id="wcdb-project-modal" tabindex="-1" aria-labelledby="wcdbProjectLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header border-0 pb-0">
+          <h4 class="modal-title fw-bold" id="wcdbProjectLabel" style="color:#00bfff;">World Cup Database</h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <a href="#wcdb-image-modal" data-bs-toggle="modal">
+            <img src="images/project-7.png" alt="World Cup Database Cover" class="img-fluid rounded shadow mb-4 d-block mx-auto" style="max-height:220px;object-fit:cover;cursor:zoom-in;" />
+          </a>
+          <hr style="border-top:1.5px solid #00bfff33;" class="mb-4" />
+          <section style="font-size:1.13rem;line-height:1.7;">
+            <p><strong>Summary:</strong> Designed a relational database for FIFA World Cup data using SQL and Microsoft Access, featuring 11 core entities (Players, Matches, Awards).</p>
+            <ul>
+              <li>Complex queries (top scorers, team penalties, shared awards).</li>
+              <li>Data validation against FIFA rules (e.g., player-team registration).</li>
+              <li>User-friendly forms for tournament/player management.</li>
+            </ul>
+            <div class="mb-3">
+              <span class="badge bg-primary me-1">SQL</span>
+              <span class="badge bg-info me-1">MS Access</span>
+              <span class="badge bg-success me-1">GitHub</span>
+            </div>
+            <p><strong>Insights:</strong> 1994 had most awards (9); Brazil most yellow cards (135); Scolari managed most matches (7).</p>
+            <a href="pdfs/Database Management Systems Project.pdf" target="_blank" class="btn btn-primary mt-3">Preview Project (PDF)</a>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for Milk Production Efficiency Image Preview -->
+  <div class="modal fade" id="milk-efficiency-image-modal" tabindex="-1" aria-labelledby="milkEfficiencyImageLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-light p-2" style="border-radius:1.2rem;">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title" id="milkEfficiencyImageLabel">Determinants of Milk Production Efficiency</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center p-2">
+          <img src="images/project-1.png" alt="Milk Production Efficiency Full Preview" class="img-fluid rounded shadow" style="max-width:100%;height:auto;" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for Milk Production Efficiency Project -->
+  <div class="modal fade" id="milk-efficiency-project-modal" tabindex="-1" aria-labelledby="milkEfficiencyProjectLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header border-0 pb-0">
+          <h4 class="modal-title fw-bold" id="milkEfficiencyProjectLabel" style="color:#00bfff;">Determinants of Milk Production Efficiency: A Fixed Effects Panel Data Analysis of Spanish Dairy Farms</h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <a href="#milk-efficiency-image-modal" data-bs-toggle="modal">
+            <img src="images/project-1.png" alt="Milk Production Efficiency Cover" class="img-fluid rounded shadow mb-4 d-block mx-auto" style="max-height:220px;object-fit:cover;cursor:zoom-in;" />
+          </a>
+          <hr style="border-top:1.5px solid #00bfff33;" class="mb-4" />
+          <section style="font-size:1.13rem;line-height:1.7;">
+            <p><strong>Summary:</strong> This project analyzes the efficiency of milk production across 247 Spanish dairy farms from 1993–1998. Using panel data methods, it investigates how core inputs (cows, land, labor, feed) impact milk output, tests for returns to scale, and examines input interactions. Key findings reveal cows and feed significantly drive production (elasticities: 0.66–0.38), with evidence of increasing returns to scale. Labor shows negligible effects, while land has a minor positive impact.</p>
+            <div class="mb-3">
+              <span class="badge bg-primary me-1">R</span>
+              <span class="badge bg-info me-1">plm</span>
+              <span class="badge bg-success me-1">lmtest</span>
+              <span class="badge bg-warning text-dark me-1">sandwich</span>
+            </div>
+            <p><strong>Methods:</strong> Fixed effects models, Translog production function, Breusch-Pagan/Hausman tests, cluster-robust SEs.</p>
+            <a href="pdfs/Determinants_of_Milk_Production_Efficiency-A_Fixed_Effects_Panel_Data_Analysis_of_Spanish_Dairy_Farms.pdf" target="_blank" class="btn btn-primary mt-3">Preview Project (PDF)</a>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for BP Image Preview -->
+  <div class="modal fade" id="bp-image-modal" tabindex="-1" aria-labelledby="bpImageLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-light p-2" style="border-radius:1.2rem;">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title" id="bpImageLabel">Statistical Modeling of Blood Pressure</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center p-2">
+          <img src="images/project-3.png" alt="Blood Pressure Model Full Preview" class="img-fluid rounded shadow" style="max-width:100%;height:auto;" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for BP Project -->
+  <div class="modal fade" id="bp-project-modal" tabindex="-1" aria-labelledby="bpProjectLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header border-0 pb-0">
+          <h4 class="modal-title fw-bold" id="bpProjectLabel" style="color:#00bfff;">Statistical Modeling of Blood Pressure</h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <a href="#bp-image-modal" data-bs-toggle="modal">
+            <img src="images/project-3.png" alt="Blood Pressure Model Cover" class="img-fluid rounded shadow mb-4 d-block mx-auto" style="max-height:220px;object-fit:cover;cursor:zoom-in;" />
+          </a>
+          <hr style="border-top:1.5px solid #00bfff33;" class="mb-4" />
+          <section style="font-size:1.13rem;line-height:1.7;">
+            <p><strong>Summary:</strong> This study develops a regression model to predict blood pressure (BP) using predictors like age, BSA, pulse, stress, and drug utilization (DUR). After addressing multicollinearity (BSA vs. weight) and validating assumptions via log transformation, the final model identifies BSA, age, and pulse as significant predictors. The log-transformed model explains 90.1% of BP variation, with BSA having the strongest effect (21.3% increase per unit).</p>
+            <div class="mb-3">
+              <span class="badge bg-primary me-1">R</span>
+              <span class="badge bg-info me-1">car</span>
+              <span class="badge bg-success me-1">ggplot2</span>
+              <span class="badge bg-warning text-dark me-1">lmtest</span>
+            </div>
+            <p><strong>Methods:</strong> Multiple linear regression, variance inflation factor (VIF), residual diagnostics, log transformation.</p>
+            <a href="pdfs/Regression_Analysis_Project.pdf" target="_blank" class="btn btn-primary mt-3">Preview Project (PDF)</a>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for VIX Image Preview -->
+  <div class="modal fade" id="vix-image-modal" tabindex="-1" aria-labelledby="vixImageLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-light p-2" style="border-radius:1.2rem;">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title" id="vixImageLabel">Time Series Analysis of the VIX</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center p-2">
+          <img src="images/project-2.png" alt="VIX Time Series Full Preview" class="img-fluid rounded shadow" style="max-width:100%;height:auto;" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for VIX Project -->
+  <div class="modal fade" id="vix-project-modal" tabindex="-1" aria-labelledby="vixProjectLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header border-0 pb-0">
+          <h4 class="modal-title fw-bold" id="vixProjectLabel" style="color:#00bfff;">Time Series Analysis of the VIX (Volatility Index)</h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <a href="#vix-image-modal" data-bs-toggle="modal">
+            <img src="images/project-2.png" alt="VIX Time Series Cover" class="img-fluid rounded shadow mb-4 d-block mx-auto" style="max-height:220px;object-fit:cover;cursor:zoom-in;" />
+          </a>
+          <hr style="border-top:1.5px solid #00bfff33;" class="mb-4" />
+          <section style="font-size:1.13rem;line-height:1.7;">
+            <p><strong>Summary:</strong> This project forecasts the VIX Index (1990–2025) using Box-Jenkins (ARIMA) and classical decomposition. After log transformation and annual aggregation, an AR(1) model outperforms alternatives (MAPE: 6.67%), predicting stable volatility (16–24 VIX) through 2034. The cubic trend decomposition captures nonlinear patterns but explains only 3.4% of variance, highlighting limitations in crisis prediction.</p>
+            <div class="mb-3">
+              <span class="badge bg-primary me-1">R</span>
+              <span class="badge bg-info me-1">forecast</span>
+              <span class="badge bg-success me-1">tseries</span>
+              <span class="badge bg-warning text-dark me-1">seasonal</span>
+            </div>
+            <p><strong>Methods:</strong> ARIMA modeling, Kruskal-Wallis test (seasonality), classical decomposition, cubic trend fitting.</p>
+            <a href="pdfs/Time_Series_Analysis-VIX.pdf" target="_blank" class="btn btn-primary mt-3">Preview Project (PDF)</a>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for E-Government Project -->
+  <div class="modal fade" id="egov-project-modal" tabindex="-1" aria-labelledby="egovProjectLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header border-0 pb-0">
+          <h4 class="modal-title fw-bold" id="egovProjectLabel" style="color:#00bfff;">E-Government Implementation in Egypt: Challenges, Impact, and Strategic Framework</h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="images/project-4.png" alt="E-Government Full Cover" class="img-fluid rounded shadow mb-4 d-block mx-auto" style="max-height:220px;object-fit:cover;" />
+          <hr style="border-top:1.5px solid #00bfff33;" class="mb-4" />
+          <section style="font-size:1.13rem;line-height:1.7;">
+            <p><strong>Summary:</strong> This comprehensive research project analyzes Egypt's e-government ecosystem, focusing on its alignment with Egypt Vision 2030. It evaluates the current state of digital governance across healthcare, education, and public administration, identifies critical barriers (e.g., digital divide, funding gaps, cultural resistance), and measures the impact of emerging technologies (AI, IoT, blockchain) on service delivery. The study highlights Egypt's COVID-19 digital response as a catalyst for e-adoption while proposing solutions for sustainable implementation.</p>
+            <ul>
+              <li><strong>Literature Synthesis:</strong> 16+ academic studies (2014–2023), comparative analysis, systematic review.</li>
+              <li><strong>Conceptual Framework:</strong> 8 critical success factors (Tech, Finance, Culture, Health, etc.), causal loop diagrams.</li>
+              <li><strong>Mixed-Methodology:</strong> 400+ survey responses, expert interviews, SPSS, ISM-MICMAC modeling.</li>
+              <li><strong>Case Studies:</strong> Egypt Health Passport, Banha University e-governance, blockchain for land registry.</li>
+              <li><strong>Key Findings:</strong> Only 45% support fee-based e-services; Egypt ranks 103/193 in UN e-gov index; cultural resistance and funding are top barriers.</li>
+            </ul>
+            <a href="pdfs/E-Government.pdf" target="_blank" class="btn btn-primary mt-3">Preview Project (PDF)</a>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 

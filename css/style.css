@@ -1,0 +1,413 @@
+body {
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: transparent;
+  min-height: 100vh;
+}
+
+.navbar {
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card {
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  transition: box-shadow 0.2s;
+}
+.card:hover {
+  box-shadow: 0 8px 32px rgba(0,191,255,0.15);
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #00bfff 0%, #00fff7 100%);
+  border: none;
+}
+.btn-outline-light {
+  border-color: #00bfff;
+  color: #00bfff;
+}
+.btn-outline-light:hover {
+  background: #00bfff;
+  color: #fff;
+}
+
+.bg-secondary {
+  background: rgba(30, 34, 44, 0.95) !important;
+}
+
+/* Dark mode support */
+.bg-dark, .navbar-dark {
+  background: #181c24 !important;
+}
+.text-light {
+  color: #f8f9fa !important;
+}
+.bg-light {
+  background: #f8f9fa !important;
+}
+.text-dark {
+  color: #181c24 !important;
+}
+
+/* Tech-inspired accent */
+:root {
+  --accent: #00bfff;
+  --accent2: #00fff7;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent2);
+  text-decoration: underline;
+}
+
+/* Glassmorphism for cards/sections */
+.card, .bg-secondary, .form-control, .input-group, .btn, .navbar, .container, .main-section {
+  background: rgba(30, 34, 44, 0.65) !important;
+  backdrop-filter: blur(8px) saturate(1.2);
+  -webkit-backdrop-filter: blur(8px) saturate(1.2);
+  box-shadow: 0 8px 32px 0 rgba(0,191,255,0.18);
+  border: 1px solid rgba(0,191,255,0.12);
+}
+
+/* Headings with glow/neon effect */
+h1, h2, h3, h4, h5, h6 {
+  color: #fff;
+  text-shadow: 0 0 8px #00bfff, 0 0 2px #00fff7;
+}
+
+/* Button glow */
+.btn-primary, .btn-outline-light {
+  box-shadow: 0 0 12px #00bfff99, 0 0 4px #00fff799;
+}
+
+/* Text color for contrast */
+.text-light, .card, .form-control, .input-group, .btn {
+  color: #f8f9fa !important;
+}
+
+/* Form placeholder color */
+.form-control::placeholder {
+  color: #b0eaff !important;
+  opacity: 1;
+}
+
+/* Section backgrounds for readability */
+section, .main-section, .container {
+  background: rgba(24, 28, 36, 0.7) !important;
+  border-radius: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 2rem 1rem;
+}
+
+/* Neon/cyberpunk glow */
+.neon-glow {
+  color: #fff !important;
+  text-shadow: 0 0 12px #00bfff, 0 0 24px #00fff7, 0 0 2px #0ff1ce;
+}
+
+/* Glassmorphism utility */
+.glassy {
+  background: rgba(30, 34, 44, 0.55) !important;
+  backdrop-filter: blur(12px) saturate(1.3);
+  -webkit-backdrop-filter: blur(12px) saturate(1.3);
+  box-shadow: 0 8px 32px 0 rgba(0,191,255,0.18);
+  border: 1.5px solid rgba(0,191,255,0.18);
+}
+
+/* Section and card backgrounds for depth */
+.main-section, section, .card, .container {
+  background: rgba(24, 28, 36, 0.7) !important;
+  border-radius: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 2rem 1rem;
+}
+
+/* Footer glassy */
+footer.glassy {
+  background: rgba(24, 28, 36, 0.8) !important;
+  border-radius: 0.5rem 0.5rem 0 0;
+  box-shadow: 0 -2px 24px 0 rgba(0,191,255,0.10);
+}
+
+/* Button and icon glow */
+.animated-btn, .btn-primary, .btn-outline-light {
+  box-shadow: 0 0 16px #00bfff99, 0 0 8px #00fff799;
+  transition: transform 0.18s cubic-bezier(.4,2,.3,1), box-shadow 0.18s;
+}
+.animated-btn:hover, .btn-primary:hover, .btn-outline-light:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 32px #00bfffcc, 0 0 16px #00fff7cc;
+}
+
+/* Skill icons */
+.skill-icon {
+  filter: drop-shadow(0 0 8px #00bfff);
+}
+
+/* Text color for contrast */
+.text-light, .card, .form-control, .input-group, .btn {
+  color: #f8f9fa !important;
+}
+
+/* Form placeholder color */
+.form-control::placeholder {
+  color: #b0eaff !important;
+  opacity: 1;
+}
+
+/* --- Contact Section Polish --- */
+
+/* Softer neon for headings */
+h1, h2, h3, h4, h5, h6, .neon-glow {
+  color: #eaf6ff !important;
+  text-shadow: 0 0 6px #00bfff88, 0 0 12px #00fff755;
+}
+
+/* Subtle glassy card shadow */
+.card, .glassy {
+  box-shadow: 0 4px 32px 0 rgba(0,191,255,0.10), 0 1.5px 8px 0 rgba(0,0,0,0.10);
+  border: 1.5px solid rgba(0,191,255,0.10);
+}
+
+/* Remove strong blue glow from inputs */
+.form-control, .input-group {
+  box-shadow: none;
+  border: 1.5px solid #1e2a3a;
+  background: rgba(24, 28, 36, 0.92) !important;
+  color: #eaf6ff !important;
+}
+.form-control:focus {
+  border-color: #00bfff;
+  box-shadow: 0 0 0 2px #00bfff33;
+  background: rgba(24, 28, 36, 0.98) !important;
+  color: #fff !important;
+}
+
+/* Placeholder color: subtle, not glowing */
+.form-control::placeholder {
+  color: #7fdcff !important;
+  opacity: 1;
+  text-shadow: none;
+}
+
+/* Label color: high contrast */
+.form-label {
+  color: #eaf6ff !important;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Card padding and spacing */
+.card {
+  padding: 2.2rem 1.5rem !important;
+  margin-bottom: 2rem;
+  border-radius: 1.25rem;
+}
+
+/* Contact section layout */
+@media (min-width: 992px) {
+  .contact-section .row.g-5 > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* Button: subtle glow, not too strong */
+.btn-primary, .btn-outline-light, .animated-btn {
+  box-shadow: 0 0 8px #00bfff55, 0 0 2px #00fff733;
+  border-radius: 0.75rem;
+  font-weight: 600;
+}
+.btn-primary:hover, .btn-outline-light:hover, .animated-btn:hover {
+  box-shadow: 0 0 16px #00bfff99, 0 0 8px #00fff799;
+}
+
+/* Section background: subtle gradient for depth */
+.main-section, section, .container {
+  background: linear-gradient(135deg, rgba(24,28,36,0.85) 60%, rgba(0,191,255,0.08) 100%) !important;
+  border-radius: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 2rem 1rem;
+}
+
+/* Responsive fix for map and form */
+@media (max-width: 991px) {
+  .contact-section .row.g-5 > div {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* --- Creative Portfolio Card Floating Shapes & Love Theme --- */
+.portfolio-card-creative {
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+.portfolio-card-creative .floating-shape {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  filter: blur(1.5px) saturate(1.2);
+  transition: transform 0.7s cubic-bezier(.4,2,.3,1), opacity 0.4s;
+}
+.portfolio-card-creative .floating-shape.blob {
+  width: 90px; height: 70px;
+  background: radial-gradient(circle at 60% 40%, #00bfff 60%, #00fff7 100%);
+  border-radius: 60% 40% 60% 40%/50% 60% 40% 60%;
+  top: -30px; left: -30px;
+  animation: floatBlob 6s ease-in-out infinite alternate;
+}
+.portfolio-card-creative .floating-shape.heart {
+  width: 48px; height: 44px;
+  background: linear-gradient(135deg, #ff6bcb 60%, #ffd6e0 100%);
+  clip-path: path('M24 42s-12-8.35-12-18A12 12 0 0 1 24 12a12 12 0 0 1 12 12c0 9.65-12 18-12 18z');
+  top: -18px; right: -18px;
+  opacity: 0.38;
+  animation: floatHeart 7s ease-in-out infinite alternate;
+}
+.portfolio-card-creative .floating-shape.circle {
+  width: 38px; height: 38px;
+  background: radial-gradient(circle, #fff0 60%, #00fff7 100%);
+  border-radius: 50%;
+  bottom: -18px; left: 60%;
+  opacity: 0.22;
+  animation: floatCircle 5.5s ease-in-out infinite alternate;
+}
+@keyframes floatBlob {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(18px) scale(1.08) rotate(-8deg); }
+}
+@keyframes floatHeart {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-10px) scale(1.12) rotate(8deg); }
+}
+@keyframes floatCircle {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(12px) scale(1.18) rotate(-12deg); }
+}
+@media (max-width: 991px) {
+  .portfolio-card-creative .floating-shape.blob {
+    width: 60px; height: 44px; top: -18px; left: -12px;
+  }
+  .portfolio-card-creative .floating-shape.heart {
+    width: 32px; height: 28px; top: -8px; right: -8px;
+  }
+  .portfolio-card-creative .floating-shape.circle {
+    width: 22px; height: 22px; bottom: -8px; left: 60%;
+  }
+}
+
+/* --- Full Cover Card for Blood Pressure Project --- */
+.bp-cover-card {
+  position: relative;
+  background: none !important;
+  overflow: hidden;
+  min-height: 340px;
+  box-shadow: 0 8px 32px 0 rgba(0,191,255,0.18), 0 1.5px 8px 0 rgba(0,0,0,0.10);
+}
+.bp-cover-img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: 1.25rem;
+  z-index: 0;
+  transition: transform 0.25s cubic-bezier(.4,2,.3,1);
+}
+.bp-cover-card:hover .bp-cover-img {
+  transform: scale(1.04) rotate(-1deg);
+}
+.bp-cover-overlay {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  background: rgba(24,28,36,0.72);
+  backdrop-filter: blur(6px) saturate(1.2);
+  -webkit-backdrop-filter: blur(6px) saturate(1.2);
+  border-radius: 0 0 1.25rem 1.25rem;
+  padding: 1.2rem 1.1rem 1.1rem 1.1rem;
+  z-index: 2;
+  width: 100%;
+  min-height: 120px;
+  box-shadow: 0 -2px 16px 0 rgba(0,191,255,0.10);
+}
+.bp-cover-card .floating-shape {
+  z-index: 3;
+}
+@media (max-width: 991px) {
+  .bp-cover-card { min-height: 220px; }
+  .bp-cover-overlay { min-height: 80px; padding: 0.8rem 0.7rem 0.7rem 0.7rem; }
+}
+
+/* --- Global Floating Background Shapes --- */
+.floating-bg-shapes {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.bg-shape {
+  position: absolute;
+  opacity: 0.32;
+  filter: blur(2.5px) saturate(1.2);
+  pointer-events: none;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+}
+.bg-shape.blob {
+  background: radial-gradient(circle at 60% 40%, #00bfff 60%, #00fff7 100%);
+  border-radius: 60% 40% 60% 40%/50% 60% 40% 60%;
+  animation-name: floatBgBlob;
+}
+.bg-shape.heart {
+  background: linear-gradient(135deg, #ff6bcb 60%, #ffd6e0 100%);
+  clip-path: path('M24 42s-12-8.35-12-18A12 12 0 0 1 24 12a12 12 0 0 1 12 12c0 9.65-12 18-12 18z');
+  border-radius: 40% 60% 60% 40%/60% 40% 60% 40%;
+  animation-name: floatBgHeart;
+}
+.bg-shape.circle {
+  background: radial-gradient(circle, #fff0 60%, #00fff7 100%);
+  border-radius: 50%;
+  animation-name: floatBgCircle;
+}
+@keyframes floatBgBlob {
+  0% { transform: translateY(0) scale(1) rotate(0deg); }
+  25% { transform: translateY(-18px) scale(1.08) rotate(-8deg); }
+  50% { transform: translateY(0) scale(1) rotate(0deg); }
+  75% { transform: translateY(18px) scale(0.96) rotate(8deg); }
+  100% { transform: translateY(0) scale(1) rotate(0deg); }
+}
+@keyframes floatBgHeart {
+  0% { transform: translateY(0) scale(1) rotate(0deg); }
+  25% { transform: translateY(12px) scale(1.12) rotate(8deg); }
+  50% { transform: translateY(0) scale(1) rotate(0deg); }
+  75% { transform: translateY(-12px) scale(0.96) rotate(-8deg); }
+  100% { transform: translateY(0) scale(1) rotate(0deg); }
+}
+@keyframes floatBgCircle {
+  0% { transform: translateY(0) scale(1) rotate(0deg); }
+  25% { transform: translateY(-10px) scale(1.18) rotate(-12deg); }
+  50% { transform: translateY(0) scale(1) rotate(0deg); }
+  75% { transform: translateY(10px) scale(0.92) rotate(12deg); }
+  100% { transform: translateY(0) scale(1) rotate(0deg); }
+}
+@media (max-width: 991px) {
+  .floating-bg-shapes .bg-shape { opacity: 0.18; filter: blur(1.2px); }
+}
+
+/* --- Front Layer for Floating Shapes (above glass, below modals) --- */
+.floating-bg-shapes.front {
+  z-index: 20;
+}
+.floating-bg-shapes.front .bg-shape {
+  opacity: 0.38;
+  filter: blur(3.5px) saturate(1.2);
+} 
